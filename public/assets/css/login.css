@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif, Arial, Monospaced;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2e4a70;
+    min-height: 100vh;
+}
+.loginArea {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    border-radius: 5px;
+    box-shadow: 0px 0px 6px 2px rgba(0,0,0,0.5);
+}
+.title {
+    display:flex;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+}
+#imgLogo {
+    width: 40px;
+    height: 40px;
+    border-bottom: 1px solid #000b16;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+h2 {
+    margin: 0;
+}
+input, button{
+    margin-bottom: 20px;
+}
+
+a {
+    color: #000;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+.btn-primary {
+    background-color: #054f77;
+    border-color: #054f77;
+}
+.eye {
+    background-color: #FFFFFF;
+    border: none;
+    cursor: pointer !important;
+}
+.eye:hover {
+    cursor: pointer !important;
+    background-color: #FFFFFF;
+}
+.pass {
+    border-radius: .25rem !important;
+}
