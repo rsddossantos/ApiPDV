@@ -28,13 +28,17 @@ interface para efetuar as tarefas solicitadas, que irá acionar os endpoints da 
   <code>php artisan jwt:secret</code>
   <br><br>
 - Criar base em MySql com nome <strong>apipdv</strong>. Recomendado utilizar collation UTF8MB4_UNICODE_CI
+- Importar o dump para criar a estrutura e dados iniciais, arquivo <strong>apipdv.sql</strong> na raiz do projeto
 - Alterar as credenciais do seu banco no arquivo <strong>.env</strong>
-- Executar a migration:<br><br>
-  <code>php artisan migrate</code>
-  <br><br>
 - Subir o serviço:<br><br>
   <code>php artisan serve</code>  
   
+<hr>
+
+### Relacionamento Dataset:
+
+![relacionamento_bd](https://user-images.githubusercontent.com/61060100/120015804-275a8c80-bfba-11eb-99c0-46865976f65f.png)
+
 <hr>
 
 ### Funcionamento e Endpoits:
