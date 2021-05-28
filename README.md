@@ -55,6 +55,8 @@ EXEMPLO
 
 - O cadastramento do usuário, que aqui também consideramos ser um funcionário, pode ser feito previamente na tela de login->register,
 e o cadastro pode ser atualizado posteriormente.
+  
+- O acesso a interface pode ser somente acionando o servidor e porta que será direcionado para a página de login. Ex: http://127.0.0.1:8000
 
 
 

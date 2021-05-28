@@ -6,9 +6,8 @@ $(document).ready(
 
         $.ajax({
             type:'GET',
-            url:'/api/user',
+            url:'/api/user?token='+token,
             dataType:'json',
-            data: token,
             success:function(json){
                 if(json.data.length>0){
                     for(var i in json.data){
@@ -23,9 +22,10 @@ $(document).ready(
                     }
                 }
             },
-            error:function(){
-                alert("Ocorreu um erro na consulta, tente novamente");
-                console.log(token);
+            error:function(e){
+                if (e.status == 401) {
+                    window.location.href = '/api/web/login';
+                }
             }
         });
 

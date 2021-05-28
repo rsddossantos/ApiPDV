@@ -113,6 +113,8 @@ class AuthController extends Controller
     }
 
     public function unauthorized() {
-        return  view('login');
+        return response()->json([
+            'error' => 'Não autorizado'
+        ], 401);
     }
 }

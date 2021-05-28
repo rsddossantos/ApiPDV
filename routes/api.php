@@ -27,6 +27,9 @@ Route::get('/ping', function() {
  */
 Route::post('/user', [AuthController::class, 'create']);
 
+/*
+ * @params: token
+ */
 Route::get('/user', [UserController::class, 'list']);
 
 /*
@@ -54,7 +57,7 @@ Route::post('/auth/refresh', [AuthController::class, 'refresh']);
 /*
  * Internal Control
  */
-Route::get('/web/login', [AuthController::class, 'unauthorized'])->name('login');
+Route::get('/401', [AuthController::class, 'unauthorized'])->name('login');
 
 
 
