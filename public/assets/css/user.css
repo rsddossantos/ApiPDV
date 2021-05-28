@@ -1,10 +1,9 @@
 
 .header {
-    color: #8c8c8c;
+    color: #054f77;
 }
-.header a:link{
-    text-decoration:none;
-    color: #2e4a70;
+h3 {
+    color: #808080;
 }
 .newtask {
     margin-bottom: 20px;
@@ -14,11 +13,19 @@
 .newtask a{
     text-decoration:none;
     font-size:18px;
+    color: #054f77;
 }
 .newtask a:hover {
-    color:#2e4a70;
+    color:#007FFF;
 }
 td {
     vertical-align: middle !important;
+}
+.btn-primary {
+    background-color: #054f77;
+    border-color: #054f77;
+}
+.model {
+    display: none;
 }
 

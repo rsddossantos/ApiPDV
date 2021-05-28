@@ -29,8 +29,8 @@ Route::prefix('/')->group(function() {
         return view('register');
     });
 
-    Route::get('/api/web/home', function () {
-        return view('home');
+    Route::get('/api/web/user', function () {
+        return view('user');
     });
 
 });

@@ -27,7 +27,7 @@ interface para efetuar as tarefas solicitadas, que irá acionar os endpoints da 
 - Gerar secret do autenticador JWT:<br><br>
   <code>php artisan jwt:secret</code>
   <br><br>
-- Criar base em MySql com nome <strong>apidoc</strong>. Recomendado utilizar collation UTF8MB4_UNICODE_CI
+- Criar base em MySql com nome <strong>apipdv</strong>. Recomendado utilizar collation UTF8MB4_UNICODE_CI
 - Alterar as credenciais do seu banco no arquivo <strong>.env</strong>
 - Executar a migration:<br><br>
   <code>php artisan migrate</code>

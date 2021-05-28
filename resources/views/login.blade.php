@@ -55,14 +55,13 @@
                         $('.alert').html(json.error);
                         $('.alert').show();
                     } else {
-                        window.location.href = '/api/web/home?token='+json.token;
+                        window.location.href = '/api/web/user?token='+json.token;
                     }
                 },
                 error:function(){
                     alert("Ocorreu um erro na consulta, tente novamente");
                 }
             });
-
         });
     </script>
 </body>
