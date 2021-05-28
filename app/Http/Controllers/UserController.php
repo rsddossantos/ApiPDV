@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -20,7 +21,12 @@ class UserController extends Controller
     public function list()
     {
         $data = ['error' => ''];
-        $info = User::all();
+        $info = DB::table('users')
+            ->select('users.*',
+                (DB::raw("(SELECT offices.name FROM offices WHERE offices.id = users.id_office) AS office_name")),
+                (DB::raw("(SELECT departments.name FROM departments WHERE departments.id = users.id_department) AS department_name")),
+            )
+            ->get();
         $data['data'] = $info;
         return $data;
     }

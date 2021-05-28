@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +25,14 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        /*
+        * Query in storage/logs/laravel.log
+        */
+
+       DB::listen(function ($query) {
+           Log::info($query->sql);
+           Log::info($query->bindings);
+       });
+
     }
 }

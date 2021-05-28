@@ -20,7 +20,7 @@
     <section>
         <h3>Funcionários</h3>
         <div class="newtask"><a href="">+ Adicionar novo funcionário</a></div>
-
+        <div class="importcsv"><button class="btn btn-success">Importar CSV</button></div>
 
         <table class="table table-hover">
             <thead>
@@ -28,14 +28,18 @@
                 <th>ID</th>
                 <th>Nome</th>
                 <th>Email</th>
+                <th>Cargo</th>
+                <th>Departamento</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
             <tr class="model">
-                <td id="id">ID</td>
-                <td id="nome">Nome</td>
-                <td id="email">Email</td>
+                <td id="id"></td>
+                <td id="nome"></td>
+                <td id="email"></td>
+                <td id="cargo"></td>
+                <td id="depto"></td>
                 <td style="text-align: right;">
                     <a href=""><button class="btn btn-primary">editar</button></a>
                     <a href="" onClick="return confirm('Deseja excluir esse funcionário?')">
