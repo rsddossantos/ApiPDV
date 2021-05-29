@@ -13,9 +13,6 @@
         <label for="email" class="form-label">E-mail</label>
         <input class="form-control" type="email" name="email" id="email" spellcheck="false" required/>
 
-        <label for="pass" class="form-label">Senha</label>
-        <input class="form-control" type="password" name="password" id="pass" spellcheck="false" required/>
-
         <label for="select1" class="form-label">Cargo</label>
         <select class="form-control form-select" id="select1" name="id_office">
             <option value="1">NENHUM</option>
@@ -33,30 +30,5 @@
     </form>
 
     <script type="text/javascript" src="{{url('assets/js/user.js')}}"></script>
-    <script type="text/javascript">
-        loadUser();
-        let id = urlParams.get('id');
-        $('form').bind('submit',function(e){
-            e.preventDefault();
-            let cred = $(this).serialize();
-            $.ajax({
-                type:'POST',
-                url:'/api/user/update',
-                dataType:'json',
-                data: cred+'&token='+token+'&id='+id,
-                success:function(json){
-                    if(json.error) {
-                        $('.alert').html(json.error);
-                        $('.alert').show();
-                    } else {
-                        alert(json.data);
-                        window.location.href = '/api/web/user';
-                    }
-                },
-                error:function(){
-                    alert("Ocorreu um erro na consulta, tente novamente");
-                }
-            });
-        });
-    </script>
+    <script type="text/javascript">loadUser();updateUser();</script>
 @endsection

@@ -33,29 +33,5 @@
     </form>
 
     <script type="text/javascript" src="{{url('assets/js/user.js')}}"></script>
-    <script type="text/javascript">
-        loadSelect();
-        $('form').bind('submit',function(e){
-            e.preventDefault();
-
-            let cred = $(this).serialize();
-            $.ajax({
-                type:'POST',
-                url:'/api/user',
-                dataType:'json',
-                data: cred,
-                success:function(json){
-                    if(json.error) {
-                        $('.alert').html(json.error);
-                        $('.alert').show();
-                    } else {
-                        window.location.href = '/api/web/user';
-                    }
-                },
-                error:function(){
-                    alert("Ocorreu um erro na consulta, tente novamente");
-                }
-            });
-        });
-    </script>
+    <script type="text/javascript">loadSelect();createUser()</script>
 @endsection

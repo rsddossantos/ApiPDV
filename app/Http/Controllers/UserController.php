@@ -53,7 +53,7 @@ class UserController extends Controller
         if (!empty($name)) {
             $user->name = $name;
         }
-        if (!empty($email)) {
+        if (!empty($email) && $user->email != $email) {
             $emailExists = User::where('email', $email)->count();
             if($emailExists === 0) {
                 $validator = Validator::make(['email' => $email], ['email' => 'required|email']);

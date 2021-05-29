@@ -26,7 +26,7 @@ function selectUsers() {
                     newline.querySelector('#cargo').innerHTML = json.data[i].office_name.toUpperCase();
                     newline.querySelector('#depto').innerHTML = json.data[i].department_name.toUpperCase();
                     newline.querySelector('#update_button').setAttribute('href','/api/web/userUpdate?id='+json.data[i].id);
-                    //newline.querySelector('#delete_button');
+                    newline.querySelector('#delete_button').setAttribute('href','/api/web/userDelete?id='+json.data[i].id);
                     $('.table').append(newline);
                 }
             }
@@ -39,22 +39,28 @@ function selectUsers() {
     });
 }
 
-function logout() {
-    $.ajax({
-        type:'POST',
-        url:'/api/auth/logout',
-        dataType:'json',
-        data: 'token='+token,
-        success:function(){
-            localStorage.clear('token');
-            localStorage.clear('user');
-            document.location.reload();
-        },
-        error:function(e){
-            if (e.status == 401) {
-                window.location.href = '/api/web/login';
+function createUser() {
+    $('form').bind('submit',function(e){
+        e.preventDefault();
+
+        let cred = $(this).serialize();
+        $.ajax({
+            type:'POST',
+            url:'/api/user',
+            dataType:'json',
+            data: cred,
+            success:function(json){
+                if(json.error) {
+                    $('.alert').html(json.error);
+                    $('.alert').show();
+                } else {
+                    window.location.href = '/api/web/user';
+                }
+            },
+            error:function(){
+                alert("Ocorreu um erro na consulta, tente novamente");
             }
-        }
+        });
     });
 }
 
@@ -64,7 +70,6 @@ function loadSelect() {
         type:'GET',
         url:'/api/department?token='+token,
         dataType:'json',
-        data:token,
         success:function(json){
             if(json.data.length>0){
                 for(var i in json.data){
@@ -89,11 +94,75 @@ function loadUser() {
         url:'/api/user/update/' + id + '?token=' + token,
         dataType:'json',
         success:function(json){
-            $('#name').val(json.data.name.toUpperCase());
-            $('#email').val(json.data.email.toUpperCase());
-            $('#pass').val(json.data.password);
+            $('#name').val(json.data.name);
+            $('#email').val(json.data.email);
             $('#select1').val(json.data.id_office);
             $('#select2').val(json.data.id_department);
+        },
+        error:function(e){
+            if (e.status == 401) {
+                window.location.href = '/api/web/login';
+            }
+        }
+    });
+}
+
+function deleteUser() {
+    let id = urlParams.get('id');
+    $.ajax({
+        type:'POST',
+        url:'/api/user/delete/'+id,
+        dataType:'json',
+        data:'token='+token,
+        success:function(json){
+            if(json.error) {
+                alert(json.error);
+            }
+            window.location.href = '/api/web/user';
+        },
+        error:function(e){
+            if (e.status == 401) {
+                window.location.href = '/api/web/login';
+            }
+        }
+    });
+}
+
+function updateUser() {
+    let id = urlParams.get('id');
+    $('form').bind('submit',function(e){
+        e.preventDefault();
+        let cred = $(this).serialize();
+        $.ajax({
+            type:'POST',
+            url:'/api/user/update',
+            dataType:'json',
+            data: cred+'&token='+token+'&id='+id,
+            success:function(json){
+                if(json.error) {
+                    $('.alert').html(json.error);
+                    $('.alert').show();
+                } else {
+                    window.location.href = '/api/web/user';
+                }
+            },
+            error:function(){
+                alert("Ocorreu um erro na consulta, tente novamente");
+            }
+        });
+    });
+}
+
+function logout() {
+    $.ajax({
+        type:'POST',
+        url:'/api/auth/logout',
+        dataType:'json',
+        data: 'token='+token,
+        success:function(){
+            localStorage.clear('token');
+            localStorage.clear('user');
+            document.location.reload();
         },
         error:function(e){
             if (e.status == 401) {

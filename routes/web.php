@@ -41,10 +41,9 @@ Route::prefix('/')->group(function() {
     Route::get('/api/web/userUpdate', function () {
         return view('userUpdate');
     });
-
-
-
-
+    Route::get('/api/web/userDelete', function () {
+        return view('userDelete');
+    });
 
 
     Route::get('/api/web/department', function () {

@@ -47,9 +47,9 @@ Route::get('/user/update/{id}', [UserController::class, 'one']);
 Route::post('/user/update', [UserController::class, 'update']);
 
 /*
- * @params: token
+ * @params: token, id user
  */
-Route::get('/user/delete/{id}', [UserController::class, 'delete']);
+Route::post('/user/delete/{id}', [UserController::class, 'delete']);
 
 /*
  * @params: email, password
