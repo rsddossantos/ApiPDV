@@ -50,6 +50,10 @@ Route::post('/user/update', [UserController::class, 'update']);
  * @params: token, id user
  */
 Route::post('/user/delete/{id}', [UserController::class, 'delete']);
+/*
+ * @params: token
+ */
+Route::post('/user/import', [UserController::class, 'import']);
 
 /*
  * @params: email, password
@@ -74,6 +78,19 @@ Route::post('/department', [DepartmentController::class, 'create']);
  * @params: token
  */
 Route::get('/department', [DepartmentController::class, 'list']);
+/*
+ * @params: token, id
+ */
+Route::get('/department/update/{id}', [DepartmentController::class, 'one']);
+
+/*
+ * @params: token, name
+ */
+Route::post('/department/update', [DepartmentController::class, 'update']);
+/*
+ * @params: token, id user
+ */
+Route::post('/department/delete/{id}', [DepartmentController::class, 'delete']);
 
 
 

@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('title', 'ApIPDV - Funcion·rio')
+@section('title', 'ApIPDV - Funcion√°rio')
 
 @section('content')
 

@@ -8,7 +8,7 @@ use App\Models\Department;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
-class DepartmentController extends Controller
+class CcController extends Controller
 {
     private $loggedUser;
 

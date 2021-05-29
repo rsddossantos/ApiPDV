@@ -4,10 +4,15 @@ var user = localStorage.getItem('user');
 
 if (urlParams.get('token') || !token) {
     localStorage.setItem('token', urlParams.get('token'));
-    localStorage.setItem('user', urlParams.get('user'));
     token = localStorage.getItem('token');
+}
+
+if (urlParams.get('user') || !user) {
+    localStorage.setItem('user', urlParams.get('user'));
     user = localStorage.getItem('user');
 }
+
+$('#navbarDropdownMenuLink').text('Seja bem-vindo '+user);
 
 function logout() {
     $.ajax({

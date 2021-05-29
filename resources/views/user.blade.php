@@ -5,7 +5,7 @@
 @section('content')
     <h3>Funcionários</h3>
     <div class="newtask"><a href="/api/web/userCreate">+ Adicionar novo funcionário</a></div>
-    <div class="importcsv"><button class="btn btn-success">Importar CSV</button></div>
+    <div class="importcsv"><a href="/api/web/importCSV"><button class="btn btn-success">Importar CSV</button></a></div>
     <table class="table table-hover">
         <thead>
         <tr>

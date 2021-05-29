@@ -4,7 +4,7 @@
 
 @section('content')
     <h3>Departamentos</h3>
-    <div class="newtask"><a href="">+ Adicionar novo departamento</a></div>
+    <div class="newtask"><a href="/api/web/departmentCreate">+ Adicionar novo departamento</a></div>
     <table class="table table-hover">
         <thead>
         <tr>
@@ -18,8 +18,8 @@
             <td id="id"></td>
             <td id="nome"></td>
             <td style="text-align: right;">
-                <a href=""><button class="btn btn-primary">editar</button></a>
-                <a href="" onClick="return confirm('Deseja excluir esse registro?')">
+                <a id="update_button"><button class="btn btn-primary">editar</button></a>
+                <a id="delete_button" onClick="return confirm('Deseja excluir esse registro?')">
                     <button class="btn btn-primary">excluir</button>
                 </a>
             </td>

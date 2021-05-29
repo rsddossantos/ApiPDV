@@ -5,7 +5,6 @@ function selectUsers() {
         dataType:'json',
         success:function(json){
             if(json.data.length>0){
-                $('#navbarDropdownMenuLink').text('Seja bem-vindo '+user);
                 for(var i in json.data){
                     newline = document.querySelector('.model').cloneNode(true);
                     newline.classList.remove("model");
@@ -23,6 +22,8 @@ function selectUsers() {
         error:function(e){
             if (e.status == 401) {
                 window.location.href = '/api/web/login';
+            } else {
+                alert("Ocorreu um erro na consulta, tente novamente");
             }
         }
     });
@@ -31,13 +32,12 @@ function selectUsers() {
 function createUser() {
     $('form').bind('submit',function(e){
         e.preventDefault();
-
         let cred = $(this).serialize();
         $.ajax({
             type:'POST',
             url:'/api/user',
             dataType:'json',
-            data: cred,
+            data: cred+'&token='+token,
             success:function(json){
                 if(json.error) {
                     $('.alert').html(json.error);
@@ -46,15 +46,18 @@ function createUser() {
                     window.location.href = '/api/web/user';
                 }
             },
-            error:function(){
-                alert("Ocorreu um erro na consulta, tente novamente");
+            error:function(e){
+                if (e.status == 401) {
+                    window.location.href = '/api/web/login';
+                } else {
+                    alert("Ocorreu um erro na consulta, tente novamente");
+                }
             }
         });
     });
 }
 
 function loadSelect() {
-    $('#navbarDropdownMenuLink').text('Seja bem-vindo '+user);
     $.ajax({
         type:'GET',
         url:'/api/department?token='+token,
@@ -69,6 +72,8 @@ function loadSelect() {
         error:function(e){
             if (e.status == 401) {
                 window.location.href = '/api/web/login';
+            } else {
+                alert("Ocorreu um erro na consulta, tente novamente");
             }
         }
     });
@@ -77,7 +82,6 @@ function loadSelect() {
 function loadUser() {
     loadSelect();
     let id = urlParams.get('id');
-    $('#navbarDropdownMenuLink').text('Seja bem-vindo '+user);
     $.ajax({
         type:'GET',
         url:'/api/user/update/' + id + '?token=' + token,
@@ -91,6 +95,8 @@ function loadUser() {
         error:function(e){
             if (e.status == 401) {
                 window.location.href = '/api/web/login';
+            } else {
+                alert("Ocorreu um erro na consulta, tente novamente");
             }
         }
     });
@@ -112,6 +118,8 @@ function deleteUser() {
         error:function(e){
             if (e.status == 401) {
                 window.location.href = '/api/web/login';
+            } else {
+                alert("Ocorreu um erro na consulta, tente novamente");
             }
         }
     });
@@ -135,8 +143,45 @@ function updateUser() {
                     window.location.href = '/api/web/user';
                 }
             },
-            error:function(){
-                alert("Ocorreu um erro na consulta, tente novamente");
+            error:function(e){
+                if (e.status == 401) {
+                    window.location.href = '/api/web/login';
+                } else {
+                    alert("Ocorreu um erro na consulta, tente novamente");
+                }
+            }
+        });
+    });
+}
+
+function importCSV() {
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+    $('form').bind('submit',function(e){
+        e.preventDefault();
+        let cred = $(this).serialize();
+        $.ajax({
+            type:'POST',
+            url:'/api/user/import',
+            dataType:'json',
+            data: cred+'&token='+token,
+            success:function(json){
+                if(json.error) {
+                    $('.alert').html(json.error);
+                    $('.alert').show();
+                } else {
+                    //window.location.href = '/api/web/user';
+                    console.log(json.data);
+                }
+            },
+            error:function(e){
+                if (e.status == 401) {
+                    window.location.href = '/api/web/login';
+                } else {
+                    alert("Ocorreu um erro na consulta, tente novamente");
+                }
             }
         });
     });

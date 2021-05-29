@@ -46,5 +46,6 @@
         @yield('content')
     </section>
 </div>
+<script type="text/javascript">$('#navbarDropdownMenuLink').text('Seja bem-vindo ' + user);</script>
 </body>
 </html>

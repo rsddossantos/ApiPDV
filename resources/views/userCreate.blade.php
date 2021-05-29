@@ -1,6 +1,6 @@
 @extends('home')
 
-@section('title', 'ApIPDV - Novo Funcionário')
+@section('title', 'ApIPDV - Funcionário')
 
 @section('content')
     <h3>Novo Funcionário</h3><br><br>

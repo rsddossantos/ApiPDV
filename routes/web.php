@@ -17,25 +17,23 @@ use App\Http\Controllers\UserController;
 
 Route::prefix('/')->group(function() {
 
+    /*
+     * USERS
+     */
+
     Route::get('/', function () {
         return view('login');
     });
-
     Route::get('/api/web/login', function () {
         return view('login');
     });
-
     Route::get('/api/web/register', function () {
         return view('register');
     });
-
     Route::get('/api/web/user', function () {
         return view('user');
     });
     Route::get('/api/web/userCreate', function () {
-        return view('userCreate');
-    });
-    Route::post('/api/web/userCreateAction', function () {
         return view('userCreate');
     });
     Route::get('/api/web/userUpdate', function () {
@@ -44,10 +42,27 @@ Route::prefix('/')->group(function() {
     Route::get('/api/web/userDelete', function () {
         return view('userDelete');
     });
+    Route::get('/api/web/importCSV', function () {
+        return view('import');
+    });
 
 
+    /*
+     * DEPARTMENTS
+     */
     Route::get('/api/web/department', function () {
         return view('department');
     });
+    Route::get('/api/web/departmentCreate', function () {
+        return view('departmentCreate');
+    });
+    Route::get('/api/web/departmentUpdate', function () {
+        return view('departmentUpdate');
+    });
+    Route::get('/api/web/departmentDelete', function () {
+        return view('departmentDelete');
+    });
+
+
 
 });

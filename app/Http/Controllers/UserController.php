@@ -82,7 +82,8 @@ class UserController extends Controller
         return $data;
     }
 
-    public function delete($id) {
+    public function delete($id)
+    {
         $data = ['error' => ''];
         if ($this->loggedUser->id != $id) {
             $user = User::find($id);
@@ -91,5 +92,18 @@ class UserController extends Controller
             $data = ['error' => 'Não pode ser excluído o próprio usuário que está logado'];
         }
         return $data;
+    }
+
+    public function import(Request $request)
+    {
+        $data = ['error' => ''];
+        $file = $request->file('csv');
+
+        //$handle = fopen($file, "r");
+
+        $array = file($file, FILE_IGNORE_NEW_LINES );
+        return $data['data'] = $array;
+
+
     }
 }
