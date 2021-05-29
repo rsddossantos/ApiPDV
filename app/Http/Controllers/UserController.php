@@ -94,16 +94,4 @@ class UserController extends Controller
         return $data;
     }
 
-    public function import(Request $request)
-    {
-        $data = ['error' => ''];
-        $file = $request->file('csv');
-
-        //$handle = fopen($file, "r");
-
-        $array = file($file, FILE_IGNORE_NEW_LINES );
-        return $data['data'] = $array;
-
-
-    }
 }

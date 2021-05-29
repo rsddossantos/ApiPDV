@@ -52,9 +52,9 @@ Route::post('/user/update', [UserController::class, 'update']);
  */
 Route::post('/user/delete/{id}', [UserController::class, 'delete']);
 /*
- * @params: token
+ * @params: token, file
  */
-Route::post('/user/import', [UserController::class, 'import']);
+Route::post('/user/import', [UserController::class, 'import'])->name('import');
 
 /*
  * @params: email, password
@@ -116,9 +116,6 @@ Route::post('/cost/update', [CcController::class, 'update']);
  * @params: token, id
  */
 Route::post('/cost/delete/{id}', [CcController::class, 'delete']);
-
-
-
 
 /*
  * Internal Control

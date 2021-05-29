@@ -162,30 +162,4 @@ function importCSV() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-    $('form').bind('submit',function(e){
-        e.preventDefault();
-        let cred = $(this).serialize();
-        $.ajax({
-            type:'POST',
-            url:'/api/user/import',
-            dataType:'json',
-            data: cred+'&token='+token,
-            success:function(json){
-                if(json.error) {
-                    $('.alert').html(json.error);
-                    $('.alert').show();
-                } else {
-                    //window.location.href = '/api/web/user';
-                    console.log(json.data);
-                }
-            },
-            error:function(e){
-                if (e.status == 401) {
-                    window.location.href = '/api/web/login';
-                } else {
-                    alert("Ocorreu um erro na consulta, tente novamente");
-                }
-            }
-        });
-    });
 }

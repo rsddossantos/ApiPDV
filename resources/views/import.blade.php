@@ -4,7 +4,15 @@
 
 @section('content')
     <h3>Importação de CSV</h3><br><br>
-    <div class="alert alert-danger" style="display:none"></div>
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul style="margin: 0;">
+                @foreach($errors->all() as $error)
+                    <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <form method="POST" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
