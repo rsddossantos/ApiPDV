@@ -27,4 +27,5 @@
         </tbody>
     </table>
     <script type="text/javascript" src="{{url('assets/js/dept.js')}}"></script>
+    <script type="text/javascript">selectDepartments()</script>
 @endsection

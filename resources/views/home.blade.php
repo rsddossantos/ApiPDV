@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{url('assets/css/user.css')}}" />
     <script src="{{url('assets/js/jquery.js')}}"></script>
     <script src="{{url('assets/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+    <script type="text/javascript" src="{{url('assets/js/home.js')}}"></script>
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #2e4a70;">
