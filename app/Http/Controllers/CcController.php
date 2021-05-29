@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Department;
+use App\Models\Cc;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 
@@ -21,7 +21,12 @@ class CcController extends Controller
     public function list()
     {
         $data = ['error' => ''];
-        $info = Department::all();
+        $info = DB::table('ccs')
+            ->select('ccs.*',
+                (DB::raw("(SELECT departments.name FROM departments WHERE departments.id = ccs.id_department) AS department_name")),
+            )
+            ->orderBy('department_name')
+            ->get();
         $data['data'] = $info;
         return $data;
     }
@@ -29,25 +34,24 @@ class CcController extends Controller
     public function create(Request $request)
     {
         $data = ['error' => ''];
-        $validator = Validator::make($request->all(), [
-            'name' => 'required',
-        ]);
-        if(!$validator->fails()) {
-            $name = $request->input('name');
-            $newDept = new Department();
-            $newDept->name = $name;
-            $newDept->save();
-        } else {
-            $data['error'] = 'Dados inexistentes e/ou inválidos';
+        $name = $request->input('name');
+        $dept = $request->input('id_department');
+        if ($name < 0) {
+            $data['error'] = 'O cÃ³digo do custo deve ser maior que zero';
             return $data;
         }
+        $newCc = new Cc();
+        $newCc->name = $name;
+        $newCc->id_department = $dept;
+        $newCc->save();
+
         return $data;
     }
 
     public function one($id)
     {
         $data = ['error' => ''];
-        $info = Department::find($id);
+        $info = Cc::find($id);
         $data['data'] = $info;
         return $data;
     }
@@ -57,13 +61,14 @@ class CcController extends Controller
         $data = ['error' => ''];
         $id = $request->input('id');
         $name = $request->input('name');
-        $email = $request->input('email');
-        $dept = Department::find($id);
-        $dept->name = $name;
-        if($dept->save()) {
+        $dept = $request->input('id_department');
+        $cost = Cc::find($id);
+        $cost->name = $name;
+        $cost->id_department = $dept;
+        if($cost->save()) {
             $data['data'] = 'Dados atualizados com sucesso!';
         } else {
-            $data['error'] = 'Não houve nenhuma atualização, tente novamente';
+            $data['error'] = 'NÃ£o houve nenhuma atualizaÃ§Ã£o, tente novamente';
         }
         return $data;
     }
@@ -71,7 +76,7 @@ class CcController extends Controller
     public function delete($id)
     {
         $data = ['error' => ''];
-        $dept = Department::find($id);
+        $dept = Cc::find($id);
         $dept->delete();
         return $data;
     }

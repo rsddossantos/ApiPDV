@@ -24,6 +24,9 @@
             <li class="nav-item">
                 <a class="nav-link" href="/api/web/department">Departamentos</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/api/web/cc">Centros de Custo</a>
+            </li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\CcController;
 
 /*
 |--------------------------------------------------------------------------
@@ -69,8 +70,8 @@ Route::post('/auth/refresh', [AuthController::class, 'refresh']);
 /*
  * ROUTES FOR DEPARTMENTCONTROLLER
  *
- * @params: token, name,
- * @validation: all required / email valid and nonexistent
+ * @params: token, name
+ * @validation: all required
  */
 Route::post('/department', [DepartmentController::class, 'create']);
 
@@ -88,9 +89,33 @@ Route::get('/department/update/{id}', [DepartmentController::class, 'one']);
  */
 Route::post('/department/update', [DepartmentController::class, 'update']);
 /*
- * @params: token, id user
+ * @params: token, id
  */
 Route::post('/department/delete/{id}', [DepartmentController::class, 'delete']);
+
+/*
+ * ROUTES FOR CCCONTROLLER
+ *
+ * @params: token
+ */
+Route::post('/cost', [CcController::class, 'create']);
+/*
+ * @params: token
+ */
+Route::get('/cost', [CcController::class, 'list']);
+/*
+ * @params: token, id
+ */
+Route::get('/cost/update/{id}', [CcController::class, 'one']);
+
+/*
+ * @params: token, name
+ */
+Route::post('/cost/update', [CcController::class, 'update']);
+/*
+ * @params: token, id
+ */
+Route::post('/cost/delete/{id}', [CcController::class, 'delete']);
 
 
 

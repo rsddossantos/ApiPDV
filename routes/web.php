@@ -63,6 +63,22 @@ Route::prefix('/')->group(function() {
         return view('departmentDelete');
     });
 
+    /*
+ * COSTS CENTER
+ */
+    Route::get('/api/web/cc', function () {
+        return view('costcenter');
+    });
+    Route::get('/api/web/costcenterCreate', function () {
+        return view('costcenterCreate');
+    });
+    Route::get('/api/web/costcenterUpdate', function () {
+        return view('costcenterUpdate');
+    });
+    Route::get('/api/web/costcenterDelete', function () {
+        return view('costcenterDelete');
+    });
+
 
 
 });
