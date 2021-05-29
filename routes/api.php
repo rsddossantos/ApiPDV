@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +23,8 @@ Route::get('/ping', function() {
 });
 
 /*
+ * ROUTES FOR USERCONTROLLER
+ *
  * @params: name, email, password
  * @validation: all required / email valid and nonexistent
  */
@@ -31,6 +34,11 @@ Route::post('/user', [AuthController::class, 'create']);
  * @params: token
  */
 Route::get('/user', [UserController::class, 'list']);
+
+/*
+ * @params: token, id user
+ */
+Route::get('/user/update/{id}', [UserController::class, 'one']);
 
 /*
  * @params: token, name, email, password
@@ -53,6 +61,22 @@ Route::post('/auth/login', [AuthController::class, 'login']);
  */
 Route::post('/auth/logout', [AuthController::class, 'logout']);
 Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+
+/*
+ * ROUTES FOR DEPARTMENTCONTROLLER
+ *
+ * @params: token, name,
+ * @validation: all required / email valid and nonexistent
+ */
+Route::post('/department', [DepartmentController::class, 'create']);
+
+/*
+ * @params: token
+ */
+Route::get('/department', [DepartmentController::class, 'list']);
+
+
+
 
 /*
  * Internal Control

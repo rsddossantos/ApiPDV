@@ -55,7 +55,9 @@
                         $('.alert').html(json.error);
                         $('.alert').show();
                     } else {
-                        window.location.href = '/api/web/user?token='+json.token;
+                        //document.cookie = 'token='+json.token;
+                        //window.location.href = '/api/web/user;
+                        window.location.href = '/api/web/user?token='+json.token+'&user='+json.data.name;
                     }
                 },
                 error:function(){

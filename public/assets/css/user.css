@@ -1,8 +1,11 @@
-
-.header {
-    color: #054f77;
+.navbar-light .navbar-nav .nav-link {
+    color: #ccc;
+}
+h4{
+    color: #e3f2fd;
 }
 h3 {
+    margin-top: 20px;
     color: #808080;
 }
 .newtask {

@@ -32,5 +32,23 @@ Route::prefix('/')->group(function() {
     Route::get('/api/web/user', function () {
         return view('user');
     });
+    Route::get('/api/web/userCreate', function () {
+        return view('userCreate');
+    });
+    Route::post('/api/web/userCreateAction', function () {
+        return view('userCreate');
+    });
+    Route::get('/api/web/userUpdate', function () {
+        return view('userUpdate');
+    });
+
+
+
+
+
+
+    Route::get('/api/web/department', function () {
+        return view('department');
+    });
 
 });

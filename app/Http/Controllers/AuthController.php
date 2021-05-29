@@ -20,12 +20,16 @@ class AuthController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required',
+            'id_office' => 'required',
+            'id_department' => 'required'
         ]);
         if(!$validator->fails()) {
             $name = $request->input('name');
             $email = $request->input('email');
             $password = $request->input('password');
+            $idoffice = $request->input('id_office');
+            $iddepartment = $request->input('id_department');
             $emailExists = User::where('email', $email)->count();
             if($emailExists === 0) {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -33,6 +37,8 @@ class AuthController extends Controller
                 $newUser->name = $name;
                 $newUser->email = $email;
                 $newUser->password = $hash;
+                $newUser->id_office = $idoffice;
+                $newUser->id_department = $iddepartment;
                 $newUser->save();
                 $token = auth()->attempt([
                     'email' => $email,

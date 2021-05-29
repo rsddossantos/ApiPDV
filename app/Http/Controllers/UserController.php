@@ -26,7 +26,16 @@ class UserController extends Controller
                 (DB::raw("(SELECT offices.name FROM offices WHERE offices.id = users.id_office) AS office_name")),
                 (DB::raw("(SELECT departments.name FROM departments WHERE departments.id = users.id_department) AS department_name")),
             )
+            ->orderBy('department_name')
             ->get();
+        $data['data'] = $info;
+        return $data;
+    }
+
+    public function one($id)
+    {
+        $data = ['error' => ''];
+        $info = User::find($id);
         $data['data'] = $info;
         return $data;
     }
@@ -34,10 +43,13 @@ class UserController extends Controller
     public function update(Request $request)
     {
         $data = ['error' => ''];
-        $user = $this->loggedUser;
+        $id = $request->input('id');
         $name = $request->input('name');
         $email = $request->input('email');
         $password = $request->input('password');
+        $office = $request->input('id_office');
+        $department = $request->input('id_department');
+        $user = User::find($id);
         if (!empty($name)) {
             $user->name = $name;
         }
@@ -56,12 +68,14 @@ class UserController extends Controller
                 return $data;
             }
         }
-        if (!empty($password)) {
+        if (!empty($password) && $password != $user->password) {
             $hash = password_hash($password, PASSWORD_DEFAULT);
             $user->password = $hash;
         }
+        $user->id_office = $office;
+        $user->id_department = $department;
         if($user->save()) {
-            $data['data'] = 'Dados atualizados com sucesso';
+            $data['data'] = 'Dados atualizados com sucesso!';
         } else {
             $data['error'] = 'Não houve nenhuma atualização, tente novamente';
         }
