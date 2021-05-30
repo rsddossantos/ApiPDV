@@ -11,9 +11,12 @@ function selectUsers() {
                     newline.querySelector('#id').innerHTML = json.data[i].id;
                     newline.querySelector('#nome').innerHTML = json.data[i].name;
                     newline.querySelector('#email').innerHTML = json.data[i].email;
+                    if(!json.data[i].office_name) {
+                        json.data[i].office_name = '(item inexistente)'
+                    }
                     newline.querySelector('#cargo').innerHTML = json.data[i].office_name.toUpperCase();
                     if(!json.data[i].department_name) {
-                        json.data[i].department_name = '(item excluido)'
+                        json.data[i].department_name = '(item inexistente)'
                     }
                     newline.querySelector('#depto').innerHTML = json.data[i].department_name.toUpperCase();
                     newline.querySelector('#update_button').setAttribute('href','/api/web/userUpdate?id='+json.data[i].id);
