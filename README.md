@@ -7,10 +7,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-API em Laravel que irá devolver mensagens em formato JSON para um CRUD de funcionários.
+API em Laravel que irá devolver mensagens em formato JSON para um CRUD de funcionários, departamentos e centros de custo.
 <br>Possui autenticação JWT e contém também métodos para login, logout e refresh do token.<br>
-Apesar de não ser usual e visando facilitar a avaliação desse teste, dentro do mesmo projeto temos uma singela
-interface para efetuar as tarefas solicitadas, que irá acionar os endpoints da api através do Ajax.
+Apesar de não ser usual e visando facilitar a avaliação desse teste, dentro do mesmo projeto temos uma interface para efetuar as tarefas solicitadas, que irá acionar os endpoints da api através de requisições via ajax.
 
 <hr>
 
@@ -32,6 +31,7 @@ interface para efetuar as tarefas solicitadas, que irá acionar os endpoints da 
 - Alterar as credenciais do seu banco no arquivo <strong>.env</strong>
 - Subir o serviço:<br><br>
   <code>php artisan serve</code>  
+- Na raiz do projeto temos um arquivo CSV para testar a importação de lista de funcionário (<strong>import.csv</strong>). Caso deseje implementar, a ordem dos campos devem ser respeitados (id_office,id_department,name,email,password) e a linha do cabeçalho manter vazia.
   
 <hr>
 
