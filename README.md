@@ -1,4 +1,4 @@
-## <center>Ap<b>iPDV</b></center>
+# <p align="center"> ApIPDV</p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -31,6 +31,7 @@ Apesar de não ser usual e visando facilitar a avaliação desse teste, dentro d
 - Alterar as credenciais do seu banco no arquivo <strong>.env</strong>
 - Subir o serviço:<br><br>
   <code>php artisan serve</code>  
+  <br>
 - Na raiz do projeto temos um arquivo CSV para testar a importação de lista de funcionário (<strong>import.csv</strong>). Caso deseje implementar, a ordem dos campos devem ser respeitados (id_office,id_department,name,email,password) e a linha do cabeçalho manter vazia.
   
 <hr>
@@ -58,7 +59,7 @@ e o cadastro pode ser atualizado posteriormente.
   
 - O acesso a interface pode ser somente acionando o servidor e porta que será direcionado para a página de login. Ex: http://127.0.0.1:8000
 
-
+![Sem título](https://user-images.githubusercontent.com/61060100/120091325-54a15a80-c0e0-11eb-919c-d1c74454d427.jpg)  
 
 
   
