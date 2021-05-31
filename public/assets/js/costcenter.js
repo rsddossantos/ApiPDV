@@ -91,6 +91,9 @@ function loadCost() {
         success:function(json){
             $('#name').val(json.data.name);
             $('#select2').val(json.data.id_department);
+            if (!$('#select2').val()) {
+                $('#select2').val(1);
+            }
         },
         error:function(e){
             if (e.status == 401) {

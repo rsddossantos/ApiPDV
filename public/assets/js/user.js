@@ -97,6 +97,9 @@ function loadUser() {
             $('#email').val(json.data.email);
             $('#select1').val(json.data.id_office);
             $('#select2').val(json.data.id_department);
+            if (!$('#select2').val()) {
+                $('#select2').val(1);
+            }
         },
         error:function(e){
             if (e.status == 401) {
