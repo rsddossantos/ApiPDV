@@ -26,5 +26,5 @@
         <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar</button><br>
     </form>
     <script type="text/javascript" src="{{url('assets/js/user.js')}}"></script>
-    <script type="text/javascript">importCSV()</script>
+    <script type="text/javascript">importCSV();selectUsers();</script>
 @endsection

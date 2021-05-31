@@ -49,7 +49,6 @@ Route::prefix('/')->group(function() {
         return view('import');
     });
     Route::post('/api/web/importCSV', function (Request $request) {
-        $user = new User;
         $data = ['error' => ''];
         $file = $request->file('csv');
         $handle = fopen($file, "r");
@@ -73,7 +72,6 @@ Route::prefix('/')->group(function() {
             }
             return redirect('/api/web/user');
         } catch (PDOException  $e) {
-            //$e->getMessage()
             return redirect('/api/web/importCSV')
                 ->withErrors(['error' => [$e->getMessage()]]);
         }
