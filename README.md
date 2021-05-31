@@ -38,7 +38,9 @@ Apesar de não ser usual e visando facilitar a avaliação desse teste, dentro d
 
 ### Relacionamento Dataset:
 
-![relacionamento_bd](https://user-images.githubusercontent.com/61060100/120015804-275a8c80-bfba-11eb-99c0-46865976f65f.png)
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/61060100/120015804-275a8c80-bfba-11eb-99c0-46865976f65f.png">
+</div>
 
 <hr>
 
@@ -59,7 +61,10 @@ e o cadastro pode ser atualizado posteriormente.
   
 - O acesso a interface pode ser somente acionando o servidor e porta que será direcionado para a página de login. Ex: http://127.0.0.1:8000
 
-![Sem título](https://user-images.githubusercontent.com/61060100/120091325-54a15a80-c0e0-11eb-919c-d1c74454d427.jpg)  
+<div align="center">
+    <img src="https://user-images.githubusercontent.com/61060100/120091325-54a15a80-c0e0-11eb-919c-d1c74454d427.jpg">
+</div>
+
 
 
   
