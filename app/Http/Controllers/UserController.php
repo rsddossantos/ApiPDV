@@ -98,6 +98,10 @@ class UserController extends Controller
     {
         $data = ['error' => ''];
         $file = $request->file('csv');
+        if ($file->extension() != 'txt') {
+            $data['error'] = 'Formato de arquivo inválido';
+            return $data;
+        }
         $handle = fopen($file, "r");
         $row = 0;
         while ($line = fgetcsv($handle, 1000, ",")) {
