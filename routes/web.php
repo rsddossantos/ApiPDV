@@ -48,35 +48,6 @@ Route::prefix('/')->group(function() {
     Route::get('/api/web/importCSV', function () {
         return view('import');
     });
-    Route::post('/api/web/importCSV', function (Request $request) {
-        $data = ['error' => ''];
-        $file = $request->file('csv');
-        $handle = fopen($file, "r");
-        $row = 0;
-        while ($line = fgetcsv($handle, 1000, ",")) {
-            if ($row++ == 0) {
-                continue;
-            }
-            $func[] = [
-                'id_office' => $line[0],
-                'id_department' => $line[1],
-                'name' => $line[2],
-                'email' => $line[3],
-                'password' => password_hash($line[4], PASSWORD_DEFAULT),
-            ];
-        }
-        fclose($handle);
-        try {
-            foreach ($func as $value) {
-                User::insert($value);
-            }
-            return redirect('/api/web/user');
-        } catch (PDOException  $e) {
-            return redirect('/api/web/importCSV')
-                ->withErrors(['error' => [$e->getMessage()]]);
-        }
-    });
-
 
     /*
      * DEPARTMENTS

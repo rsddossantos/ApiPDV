@@ -94,4 +94,34 @@ class UserController extends Controller
         return $data;
     }
 
+    public function import(Request $request)
+    {
+        $data = ['error' => ''];
+        $file = $request->file('csv');
+        $handle = fopen($file, "r");
+        $row = 0;
+        while ($line = fgetcsv($handle, 1000, ",")) {
+            if ($row++ == 0) {
+                continue;
+            }
+            $func[] = [
+                'id_office' => $line[0],
+                'id_department' => $line[1],
+                'name' => $line[2],
+                'email' => $line[3],
+                'password' => password_hash($line[4], PASSWORD_DEFAULT),
+            ];
+        }
+        fclose($handle);
+        try {
+            foreach ($func as $value) {
+                User::insert($value);
+            }
+            return $data;
+        } catch (\Exception $e) {
+            $data['error'] = $e->getMessage();
+            return $data;
+        }
+    }
+
 }

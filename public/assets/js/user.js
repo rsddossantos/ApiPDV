@@ -168,4 +168,36 @@ function importCSV() {
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
+
+    $('form').bind('submit',function(e){
+        e.preventDefault();
+        let formData = new FormData();
+        let file = $('#customFile')[0].files;
+        formData.append('csv', file[0]);
+        formData.append('token', token);
+        $.ajax({
+            type:'POST',
+            url:'/api/user/import',
+            dataType:'json',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success:function(json){
+                if(json.error) {
+                    $('.alert').html(json.error);
+                    $('.alert').show();
+                } else {
+                    window.location.href = '/api/web/user';
+                }
+            },
+            error:function(e){
+                if (e.status == 401) {
+                    window.location.href = '/api/web/login';
+                } else {
+                    alert("Ocorreu um erro na consulta, tente novamente");
+                }
+            }
+        });
+    });
+
 }
